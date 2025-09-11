@@ -78,7 +78,7 @@ public class Film {
     // METODI AGGIUNTIVI
     @Override
     public String toString() {
-        return String.format("Film: %s, Anno: %d, Durata: %d, Trama: %s", this.title, this.year, this.duration,
+        return String.format("Film: %s, Anno: %d, Durata: %d minuti, Trama: %s", this.title, this.year, this.duration,
                 this.plot);
     }
 

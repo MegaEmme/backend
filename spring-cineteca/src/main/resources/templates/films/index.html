@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Films</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('Lista Films')}"></nav>
+    <main class="container p-4">
+        <h1 class="text-center fw-bold mb-4">I Film di Mike</h1>
+        <hr />
+    </main>
+
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Home</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('Home')}"></nav>
+    <div class="container">
+        <h1 class="text-center mb-4">Benvenuto nella Cineteca di Mike</h1>
+        <hr />
+        <div class="container">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit pariatur quisquam natus fuga
+                quasi,
+                repellendus nesciunt aliquam, explicabo minima, temporibus sapiente. Quibusdam, reiciendis veniam ullam
+                delectus nobis debitis aliquid. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                repudiandae
+                cum quaerat, amet, tempora sapiente delectus cumque consequuntur asperiores non, provident magnam autem
+                perferendis. Ipsa odio nisi aspernatur dolor sequi.</p>
+            <hr />
+            <p class="text-end fw-bold">
+                Buon Divertimento!<br>Michelangelo Musco
+            </p>
+        </div>
+
+    </div>
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

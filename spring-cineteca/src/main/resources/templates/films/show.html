@@ -9,21 +9,22 @@
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('Dettaglio film')}"></nav>
     <main class="container p-4" th:object="${film}">
-        <div class="card detail-card rounded-4" th:object="${film}">
+        <div class="card detail-card rounded-4 bg-dark text-light" th:object="${film}">
             <div class="card-header card-header-custom rounded-top-4">
-                <h1 class="card-title text-center fw-bold mb-0" th:text="*{title}" />
+                <h1 class="card-title text-center fw-bold mb-0 text-dark" th:text="*{title}" />
             </div>
             <div class="card-body p-5">
-                <div class="d-flex justify-content-between text-muted mb-4">
+                <div class="d-flex justify-content-between text-light mb-4">
                     <h6 class="card-subtitle">Anno: [[*{year}]]</h6>
                     <h6 class="card-subtitle fw-bold">Durata: [[*{duration}]] min</h6>
                 </div>
+                <hr />
                 <p class="card-text">
                 <h6 class="fw-bold">Trama:</h6>
                 <span th:text="*{plot}"></span>
                 </p>
                 <div class="text-center mt-4">
-                    <a th:href="@{/films}" class="btn btn-primary rounded-pill">Torna alla lista</a>
+                    <a th:href="@{/films}" class="btn btn-outline-light rounded-pill">Torna alla lista</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,30 @@
+        .movie-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            height: 100%;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-body-custom {
+            display: flex;
+            flex-direction: column;
+            height: 300px;
+        }
+
+        .card-text-custom {
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+        }
+
+        .btn-custom {
+            margin-top: auto;
+        }
+
+        .card-header-custom {
+            background-color: #f8f9fa;
+        }

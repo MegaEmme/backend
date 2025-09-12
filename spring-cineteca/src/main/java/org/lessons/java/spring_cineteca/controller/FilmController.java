@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/films")
@@ -19,19 +18,27 @@ public class FilmController {
     @Autowired
     private FilmService filmService;
 
+    // INDEX CON FILTRO RICERCA
+    // @GetMapping
+    // public String index(@RequestParam(name = "searchTerm", required = false)
+    // String searchTerm, Model model) {
+    // List<Film> films;
+    // if (searchTerm != null && !searchTerm.isEmpty()) {
+    // films = filmService.findByTitle(searchTerm);
+    // if (films.isEmpty()) {
+    // films = filmService.findAll();
+    // }
+    // } else {
+    // films = filmService.findAll();
+    // }
+    // model.addAttribute("films", films);
+    // return "films/index";
+    // }
+
     // INDEX
     @GetMapping
-    public String index(@RequestParam(name = "searchTerm", required = false) String searchTerm, Model model) {
-        List<Film> films;
-
-        if (searchTerm != null && !searchTerm.isEmpty()) {
-            films = filmService.findByTitle(searchTerm);
-            if (films.isEmpty()) {
-                films = filmService.findAll();
-            }
-        } else {
-            films = filmService.findAll();
-        }
+    public String index(Model model) {
+        List<Film> films = filmService.findAll();
         model.addAttribute("films", films);
         return "films/index";
     }

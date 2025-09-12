@@ -3,7 +3,7 @@ package org.lessons.java.spring_cineteca.controller;
 import java.util.List;
 
 import org.lessons.java.spring_cineteca.model.Film;
-import org.lessons.java.spring_cineteca.repository.FilmRepository;
+import org.lessons.java.spring_cineteca.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FilmController {
 
     @Autowired
-    private FilmRepository filmRepository;
+    private FilmService filmService;
 
     // INDEX
     @GetMapping
     public String index(@RequestParam(name = "searchTerm", required = false) String searchTerm, Model model) {
         List<Film> films;
-        if (searchTerm != null && !searchTerm.isBlank()) {
-            films = filmRepository.findByTitleContaining(searchTerm);
+
+        if (searchTerm != null && !searchTerm.isEmpty()) {
+            films = filmService.findByTitle(searchTerm);
+            if (films.isEmpty()) {
+                films = filmService.findAll();
+            }
         } else {
-            films = filmRepository.findAll();
+            films = filmService.findAll();
         }
         model.addAttribute("films", films);
         return "films/index";
@@ -35,7 +39,7 @@ public class FilmController {
     // SHOW
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
-        Film film = filmRepository.findById(id).get();
+        Film film = filmService.getById(id);
         model.addAttribute("film", film);
         return "films/show";
     }

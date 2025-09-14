@@ -80,14 +80,20 @@ public class FilmController {
         return "films/create-or-edit";
     }
 
-    @PostMapping("edit/{id}")
+    @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("film") Film formFilm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "films/create-or-edit";
         }
         filmService.update(formFilm);
-        return "redirect: /films";
+        return "redirect:/films";
     }
 
     // DELETE
+    @PostMapping("delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        Film film = filmService.getById(id);
+        filmService.delete(film);
+        return "redirect:/films";
+    }
 }

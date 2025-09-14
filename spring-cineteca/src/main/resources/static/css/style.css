@@ -3,6 +3,24 @@ body {
     background-color: #f0f2f5;
 }
 
+/* NAVBAR */
+.logo {
+    background-image: url('images/cineteca_logo.png');
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar {
+    font-size: 3vh;
+}
+
+.nav-item {
+    margin-right: 4vh;
+}
+
 /* INDEX */
 .movie-card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

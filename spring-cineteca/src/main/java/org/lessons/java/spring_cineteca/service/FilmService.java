@@ -1,6 +1,7 @@
 package org.lessons.java.spring_cineteca.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.lessons.java.spring_cineteca.model.Film;
 import org.lessons.java.spring_cineteca.repository.FilmRepository;
@@ -24,6 +25,10 @@ public class FilmService {
     }
 
     // Recupera per ID
+    public Optional<Film> findById(Integer id) {
+        return filmRepository.findById(id);
+    }
+
     public Film getById(Integer id) {
         return filmRepository.findById(id).get();
     }

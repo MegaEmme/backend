@@ -24,7 +24,7 @@ public class SecurityConfiguration {
                 // ADMIN.
                 .requestMatchers("films/create", "films/edit/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/films/**").hasAuthority("ADMIN")
-                .requestMatchers("/categories", "/categories/**").hasAuthority("ADMIN")
+                .requestMatchers("/categories", "/categories/**").hasAnyAuthority("USER", "ADMIN")
                 // I percorsi per i film sono accessibili sia da USER che da ADMIN.
                 .requestMatchers("/films", "/films/**").hasAnyAuthority("USER", "ADMIN")
                 // Tutti gli altri percorsi sono accessibili a chiunque.

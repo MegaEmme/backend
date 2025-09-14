@@ -26,10 +26,11 @@
                         <div class="d-flex justify-content-around">
                             <a th:href="@{/categories/{id}(id=*{id})}"
                                 class="btn btn-outline-success btn-custom rounded-pill mx-2">Dettagli</a>
-                            <a th:href="@{/categories/edit/{id}(id = ${category.id})}"
+                            <a sec:authorize="hasAuthority('ADMIN')"
+                                th:href="@{/categories/edit/{id}(id = ${category.id})}"
                                 class="btn btn-outline-light btn-custom rounded-pill mx-2">Modifica</a>
-                            <form class="d-inline-block" th:action="@{/categories/delete/{id}(id=${category.id})}"
-                                method="post"
+                            <form sec:authorize="hasAuthority('ADMIN')" class="d-inline-block"
+                                th:action="@{/categories/delete/{id}(id=${category.id})}" method="post"
                                 th:onsubmit="return confirm('Eliminazione category: Sei sicuro di voler eliminare ' + [[${category.name}]] + '?')">
                                 <button type="submit" class="btn btn-outline-danger btn-custom rounded-pill mx-2">
                                     Elimina

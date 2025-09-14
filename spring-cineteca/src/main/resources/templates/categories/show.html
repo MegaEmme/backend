@@ -36,9 +36,10 @@
                     <hr />
                 </div>
                 <div class="d-flex justify-content-between mt-4">
-                    <a th:href="@{/categories/edit/{id}(id = *{id})}"
+                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/categories/edit/{id}(id = *{id})}"
                         class="btn btn-outline-light rounded-pill">Modifica</a>
-                    <form class="d-inline-block" th:action="@{/categories/delete/{id}(id=${category.id})}" method="post"
+                    <form sec:authorize="hasAuthority('ADMIN')" class="d-inline-block"
+                        th:action="@{/categories/delete/{id}(id=${category.id})}" method="post"
                         th:onsubmit="return confirm('Eliminazione categoria: Sei sicuro di voler eliminare ' + [[${category.name}]] + '?')">
                         <button type="submit" class="btn btn-outline-danger rounded-pill">
                             Elimina

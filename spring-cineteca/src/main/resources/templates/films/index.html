@@ -22,7 +22,7 @@
                 <button type="submit" class="btn btn-outline-dark rounded-pill btn-sm me-2">Cerca</button>
             </form>
         </div> -->
-        <div sec:authorize="hasAuthority('ADMIN') class=" d-flex justify-content-center mb-4">
+        <div sec:authorize="hasAuthority('ADMIN')" class=" d-flex justify-content-center mb-4">
             <a th:href="@{/films/create}" class="btn btn-outline-dark btn-custom rounded-pill">Crea Film</a>
             <h3 th:text="'Ciao ' + ${username}" />
         </div>
@@ -55,9 +55,9 @@
                         <div class="d-flex justify-content-around mb-4">
                             <a th:href="@{/films/{id}(id=*{id})}"
                                 class="btn btn-outline-success btn-custom rounded-pill mx-2">Dettagli</a>
-                            <a sec:authorize="hasAuthority('ADMIN') th:href=" @{/films/edit/{id}(id=${film.id})}"
+                            <a sec:authorize="hasAuthority('ADMIN')" th:href=" @{/films/edit/{id}(id=${film.id})}"
                                 class="btn btn-outline-light btn-custom rounded-pill mx-2">Modifica</a>
-                            <form sec:authorize="hasAuthority('ADMIN') class=" d-inline-block"
+                            <form sec:authorize="hasAuthority('ADMIN')" class=" d-inline-block"
                                 th:action="@{/films/delete/{id}(id=${film.id})}" method="post"
                                 th:onsubmit="return confirm('Eliminazione film: Sei sicuro di voler eliminare ' + [[${film.title}]] + '?')">
                                 <button type="submit" class="btn btn-outline-danger btn-custom rounded-pill mx-2">

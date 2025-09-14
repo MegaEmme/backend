@@ -24,7 +24,6 @@
                             Films
                         </a>
                     </li>
-                    <!-- sec:authorize="hasAuthority('ADMIN')"  -->
                     <li class="nav-item" th:classappend="${current == 'categories'} ? 'active'">
                         <a class="nav-link" th:href="@{/categories}">
                             Generi
@@ -33,8 +32,8 @@
                 </ul>
             </div>
             <div class="user-info">
-                Logged User: <span sec:authentication="name" class="fw-bold me-2"></span>
-                Roles: <span sec:authentication="principal.authorities" class="fw-bold me-2"></span>
+                User: <span sec:authentication="name" class="fw-bold me-2"></span>
+                Role: <span sec:authentication="principal.authorities" class="fw-bold me-2"></span>
                 <a class="btn btn-sm btn-outline-primary" href="/logout">Sign out</a>
             </div>
         </div>

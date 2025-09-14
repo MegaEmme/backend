@@ -52,15 +52,14 @@
                         </div>
                         <hr />
                         <p class="card-text card-text-custom">Trama: [[*{plot}]]</p>
-                        <div class="d-flex justify-content-around">
+                        <div class="d-flex justify-content-around mb-4">
                             <a th:href="@{/films/{id}(id=*{id})}"
-                                class="btn btn-outline-light btn-custom btn-sm rounded-pill mx-2">Dettagli</a>
+                                class="btn btn-outline-success btn-custom rounded-pill mx-2">Dettagli</a>
                             <a th:href="@{/films/edit/{id}(id = ${film.id})}"
-                                class="btn btn-outline-warning btn-custom btn-sm rounded-pill mx-2">Modifica</a>
+                                class="btn btn-outline-light btn-custom rounded-pill mx-2">Modifica</a>
                             <form class="d-inline-block" th:action="@{/films/delete/{id}(id=${film.id})}" method="post"
                                 th:onsubmit="return confirm('Eliminazione film: Sei sicuro di voler eliminare ' + [[${film.title}]] + '?')">
-                                <button type="submit"
-                                    class="btn btn-outline-danger btn-custom btn-sm rounded-pill mx-2">
+                                <button type="submit" class="btn btn-outline-danger btn-custom rounded-pill mx-2">
                                     Elimina
                                 </button>
                             </form>

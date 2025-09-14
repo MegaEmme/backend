@@ -37,15 +37,14 @@
                 <span th:text="*{plot}"></span>
                 </p>
                 <div class="d-flex justify-content-between mt-4">
-                    <a th:href="@{/films/edit/{id}(id = *{id})}"
-                        class="btn btn-outline-warning rounded-pill">Modifica</a>
+                    <a th:href="@{/films/edit/{id}(id = *{id})}" class="btn btn-outline-light rounded-pill">Modifica</a>
                     <form class="d-inline-block" th:action="@{/films/delete/{id}(id=${film.id})}" method="post"
                         th:onsubmit="return confirm('Eliminazione film: Sei sicuro di voler eliminare ' + [[${film.title}]] + '?')">
                         <button type="submit" class="btn btn-outline-danger rounded-pill">
                             Elimina
                         </button>
                     </form>
-                    <a th:href="@{/films}" class="btn btn-outline-light rounded-pill">Torna alla lista</a>
+                    <a th:href="@{/films}" class="btn btn-outline-primary rounded-pill">Torna alla lista</a>
                 </div>
             </div>
         </div>

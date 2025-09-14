@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+    <title>Categorie</title>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('Lista Categorie')}"></nav>
+    <main class="container p-4">
+        <h1 class="text-center fw-bold mb-4">Lista Categorie</h1>
+        <hr />
+        <div class="d-flex justify-content-center mb-4">
+            <a th:href="@{/categories/create}" class="btn btn-outline-dark btn-custom rounded-pill mb-4">Crea
+                Categoria</a>
+        </div>
+        <div class="row g-4">
+            <div th:each="category : ${categories}" th:object="${category}" class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <div class="card movie-card rounded-4 bg-dark text-light" th:if="${categories.size()>0}">
+                    <div class="card-header card-header-custom rounded-top-4">
+                        <h1 class="card-title text-center fw-bold mb-0 text-dark">[[*{name}]]</h1>
+                    </div>
+                    <div class="card-body card-body-custom">
+                        <!-- <div class="d-flex justify-content-between text-light mb-2">
+                            <h6 class="card-subtitle">Anno: [[*{year}]]</h6>
+                            <h6 class="card-subtitle fw-bold">Durata: [[*{duration}]] min</h6>
+                        </div>
+                        <hr /> -->
+                        <p class="card-text card-text-custom">Descrizione: [[*{description}]]</p>
+                        <div class="d-flex justify-content-around">
+                            <a th:href="@{/categories/{id}(id=*{id})}"
+                                class="btn btn-outline-light btn-custom btn-sm rounded-pill mx-2">Dettagli</a>
+                            <a th:href="@{/categories/edit/{id}(id = ${category.id})}"
+                                class="btn btn-outline-warning btn-custom btn-sm rounded-pill mx-2">Modifica</a>
+                            <form class="d-inline-block" th:action="@{/categories/delete/{id}(id=${category.id})}"
+                                method="post"
+                                th:onsubmit="return confirm('Eliminazione category: Sei sicuro di voler eliminare ' + [[${category.name}]] + '?')">
+                                <button type="submit"
+                                    class="btn btn-outline-danger btn-custom btn-sm rounded-pill mx-2">
+                                    Elimina
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="mb-3 alert alert-info" th:text="'Non ci sono categorie disponibili al momento...'"
+            th:unless="${categories.size()>0}" />
+    </main>
+
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

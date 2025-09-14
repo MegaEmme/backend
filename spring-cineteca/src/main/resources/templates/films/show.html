@@ -8,6 +8,7 @@
 
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('Dettaglio film')}"></nav>
+    <div class="filler"></div>
     <main class="container p-4" th:object="${film}">
         <div class="card detail-card rounded-4 bg-dark text-light shadow-lg" th:object="${film}">
             <div class="card-header card-header-custom rounded-top-4">

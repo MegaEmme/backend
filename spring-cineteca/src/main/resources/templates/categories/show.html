@@ -8,9 +8,7 @@
 
 <body>
     <nav th:replace="~{fragments/navbar :: navbar('Dettaglio categoria')}"></nav>
-
-
-
+    <div class="filler"></div>
     <main class="container p-4" th:object="${category}">
         <div class="card detail-card rounded-4 bg-dark text-light" th:object="${category}">
             <div class="card-header card-header-custom rounded-top-4">
@@ -47,9 +45,6 @@
             </div>
         </div>
     </main>
-
-
-
     <div th:replace="~{fragments/resources :: scripts}"></div>
 </body>
 

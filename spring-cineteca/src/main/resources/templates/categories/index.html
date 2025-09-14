@@ -10,11 +10,11 @@
     <nav th:replace="~{fragments/navbar :: navbar('Lista Categorie')}"></nav>
     <div class="filler"></div>
     <main class="container p-4">
-        <h1 class="text-center fw-bold mb-4">Lista Categorie</h1>
+        <h1 class="text-center fw-bold mb-4">Lista Generi</h1>
         <hr />
         <div class="d-flex justify-content-center mb-4">
             <a th:href="@{/categories/create}" class="btn btn-outline-dark btn-custom rounded-pill mb-4">Crea
-                Categoria</a>
+                Genere</a>
         </div>
         <div class="row g-4">
             <div th:each="category : ${categories}" th:object="${category}" class="col-12 col-sm-6 col-md-4 col-lg-4">
@@ -22,9 +22,7 @@
                     <div class="card-header card-header-custom rounded-top-4">
                         <h1 class="card-title text-center fw-bold mb-0 text-dark">[[*{name}]]</h1>
                     </div>
-                    <div class="card-body card-body-custom">
-                        <hr />
-                        <p class="card-text card-text-custom">Descrizione: [[*{description}]]</p>
+                    <div class="card-body">
                         <div class="d-flex justify-content-around">
                             <a th:href="@{/categories/{id}(id=*{id})}"
                                 class="btn btn-outline-light btn-custom btn-sm rounded-pill mx-2">Dettagli</a>

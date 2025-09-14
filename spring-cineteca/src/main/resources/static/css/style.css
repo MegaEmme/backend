@@ -58,6 +58,13 @@ body {
     background-color: #f8f9fa;
 }
 
+.movie-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+}
+
 /* SHOW */
 .detail-card {
     max-width: 800px;
@@ -72,6 +79,10 @@ body {
 
 .card-header-custom {
     background-color: #f8f9fa;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* CATEGORIES */

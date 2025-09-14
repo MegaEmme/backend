@@ -18,10 +18,12 @@
             <div class="card-body p-5">
                 <div class="d-flex justify-content-between text-light mb-4">
                     <th:block th:if="${film.categories.size() > 0}">
-                        <h3 class="mb-2">Categorie:</h3>
-                        <ul class="mb-3 ps-4">
-                            <li th:each="category : *{categories}" th:text="${category.name}" />
-                        </ul>
+                        <div class="d-flex flex-wrap gap-1 mb-3">
+                            <span>Genere:</span>
+                            <span th:each="category, iterStart : *{categories}">
+                                [[${category.name}]]<th:block th:unless="${iterStart.last}"> / </th:block>
+                            </span>
+                        </div>
                     </th:block>
                     <th:block th:unless="${film.getCategories().size() > 0}">
                         <p class="mb-3 alert alert-info">Questa film non ha categorie...</p>

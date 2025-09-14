@@ -10,7 +10,7 @@
     <nav th:replace="~{fragments/navbar :: navbar('Lista Films')}"></nav>
     <div class="filler"></div>
     <main class="container p-4">
-        <h1 class="text-center fw-bold mb-4">Lista Films</h1>
+        <h1 class="text-center fw-bold mb-4">Lista Film</h1>
         <hr />
         <!-- FILTRO RICERCA  -->
         <!-- <div class="d-flex justify-content-around mb-4 align-items-center">
@@ -30,15 +30,18 @@
             <div th:each="film : ${films}" th:object="${film}" class="col-12 col-sm-6 col-md-4 col-lg-4">
                 <div class="card movie-card rounded-4 bg-dark text-light shadow" th:if="${films.size()>0}">
                     <div class="card-header card-header-custom rounded-top-4">
-                        <h1 class="card-title text-center fw-bold mb-0 text-dark">[[*{title}]]</h1>
+                        <h3 class="card-title text-center fw-bold mb-0 text-dark text-truncate movie-title">[[*{title}]]
+                        </h3>
                     </div>
                     <img th:src="*{imageUrl}" class="card-img-top img-fluid p-3" th:alt="*{title}">
                     <div class="card-body card-body-custom">
                         <th:block th:if="${film.categories.size() > 0}">
-                            <h3 class="mb-2">Categorie:</h3>
-                            <ul class="list-unstyled mb-3 ps-4">
-                                <li th:each="category : *{categories}" th:text="${category.name}" />
-                            </ul>
+                            <div class="d-flex flex-wrap gap-1 mb-3">
+                                <span>Genere:</span>
+                                <span th:each="category, iterStart : *{categories}">
+                                    [[${category.name}]]<th:block th:unless="${iterStart.last}"> / </th:block>
+                                </span>
+                            </div>
                         </th:block>
                         <th:block th:unless="${film.getCategories().size() > 0}">
                             <p class="mb-3 alert alert-info">Questa film non ha categorie...</p>

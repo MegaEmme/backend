@@ -4,10 +4,10 @@
 <head>
     <div th:replace="~{fragments/resources :: headTags}"></div>
     <div th:if="${edit}">
-        <title>Modifica Categoria "[[${category.name}]]"</title>
+        <title>Modifica Genere "[[${category.name}]]"</title>
     </div>
     <div th:unless="${edit}">
-        <title>Creazione Categoria</title>
+        <title>Creazione Genere</title>
     </div>
 </head>
 
@@ -17,10 +17,10 @@
     <main class="container">
         <div class="col-12">
             <th:block>
-                <h1 th:if="${edit}" class="py-4 mb-2 text-center">Modifica categoria:
+                <h1 th:if="${edit}" class="py-4 mb-2 text-center">Modifica genere:
                     <span class="fw-bold">"[[${category.name}]]"</span>
                 </h1>
-                <h1 th:unless="${edit}" class="py-4 mb-2 text-center">Creazione nuova categoria:
+                <h1 th:unless="${edit}" class="py-4 mb-2 text-center">Creazione nuovo genere:
                 </h1>
                 <div class="row justify-content-center">
                     <div class="col-8">

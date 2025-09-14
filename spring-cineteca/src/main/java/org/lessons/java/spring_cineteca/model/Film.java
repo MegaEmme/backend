@@ -94,6 +94,15 @@ public class Film {
         this.duration = duration;
     }
 
+    // MANY TO MANY
+    public List<Category> getCategories() {
+        return this.categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
     // METODI AGGIUNTIVI
     @Override
     public String toString() {

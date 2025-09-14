@@ -58,6 +58,7 @@ public class Category {
         this.description = description;
     }
 
+    // MANY TO MANY
     public List<Film> getFilms() {
         return this.films;
     }

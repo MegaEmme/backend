@@ -21,6 +21,11 @@ body {
     margin-right: 4vh;
 }
 
+/* HOME */
+.filler {
+    height: 10vh;
+}
+
 /* INDEX */
 .movie-card {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,4 +72,9 @@ body {
 
 .card-header-custom {
     background-color: #f8f9fa;
+}
+
+/* CATEGORIES */
+.filmLink {
+    color: inherit;
 }

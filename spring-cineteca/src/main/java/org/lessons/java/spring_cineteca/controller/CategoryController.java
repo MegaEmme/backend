@@ -73,14 +73,14 @@ public class CategoryController {
     }
 
     // DELETE
-    @PostMapping("/delete/{id}")
+    @PostMapping("delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
         Category categoryToDelete = categoryService.getById(id);
         for (Film linkedFilm : categoryToDelete.getFilms()) {
             linkedFilm.getCategories().remove(categoryToDelete);
         }
         categoryService.delete(categoryToDelete);
-        return "redirect:/ingredients";
+        return "redirect:/categories";
 
     }
 }

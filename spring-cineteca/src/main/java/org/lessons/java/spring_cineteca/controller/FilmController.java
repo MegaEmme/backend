@@ -90,7 +90,7 @@ public class FilmController {
     }
 
     // DELETE
-    @PostMapping("delete/{id}")
+    @PostMapping("/delete/{id}")
     public String delete(@PathVariable("id") Integer id) {
         Film film = filmService.getById(id);
         filmService.delete(film);

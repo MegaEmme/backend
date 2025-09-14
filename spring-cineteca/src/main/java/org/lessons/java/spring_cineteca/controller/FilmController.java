@@ -3,6 +3,7 @@ package org.lessons.java.spring_cineteca.controller;
 import java.util.List;
 
 import org.lessons.java.spring_cineteca.model.Film;
+import org.lessons.java.spring_cineteca.service.CategoryService;
 import org.lessons.java.spring_cineteca.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class FilmController {
 
     @Autowired
     private FilmService filmService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     // INDEX CON FILTRO RICERCA
     // @GetMapping
@@ -45,6 +49,7 @@ public class FilmController {
     public String index(Model model) {
         List<Film> films = filmService.findAll();
         model.addAttribute("films", films);
+        model.addAttribute("categories", categoryService.findAll());
         return "films/index";
     }
 
@@ -60,12 +65,14 @@ public class FilmController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("film", new Film());
+        model.addAttribute("categories", categoryService.findAll());
         return "films/create-or-edit";
     }
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("film") Film formFilm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.findAll());
             return "films/create-or-edit";
         }
         filmService.create(formFilm);
@@ -76,6 +83,7 @@ public class FilmController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("film", filmService.getById(id));
+        model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("edit", true);
         return "films/create-or-edit";
     }
@@ -83,6 +91,7 @@ public class FilmController {
     @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("film") Film formFilm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("categories", categoryService.findAll());
             return "films/create-or-edit";
         }
         filmService.update(formFilm);

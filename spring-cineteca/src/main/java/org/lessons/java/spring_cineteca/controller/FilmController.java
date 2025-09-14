@@ -6,6 +6,7 @@ import org.lessons.java.spring_cineteca.model.Film;
 import org.lessons.java.spring_cineteca.service.CategoryService;
 import org.lessons.java.spring_cineteca.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -46,10 +47,11 @@ public class FilmController {
 
     // INDEX
     @GetMapping
-    public String index(Model model) {
+    public String index(Authentication authentication, Model model) {
         List<Film> films = filmService.findAll();
         model.addAttribute("films", films);
         model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("username", authentication.getName());
         return "films/index";
     }
 

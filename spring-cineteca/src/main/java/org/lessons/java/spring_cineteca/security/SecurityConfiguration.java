@@ -45,15 +45,15 @@ public class SecurityConfiguration {
     @SuppressWarnings("deprecation")
     DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        // authProvider.setUserDetailsService();
+        authProvider.setUserDetailsService(userDetailService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
 
-    // @Bean
-    // DatabaseUserDetailService userDetailService() {
-    // return new DatabaseUserDetailService();
-    // }
+    @Bean
+    DatabaseUserDetailService userDetailService() {
+        return new DatabaseUserDetailService();
+    }
 
     @Bean
     PasswordEncoder passwordEncoder() {

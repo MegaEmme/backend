@@ -1,10 +1,15 @@
 package org.lessons.java.spring_cineteca.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -35,6 +40,10 @@ public class Film {
     @NotNull(message = "Duration must be not null")
     @Min(value = 0, message = "Duration cannot be negative")
     private Integer duration;
+
+    @ManyToMany
+    @JoinTable(name = "category_film", joinColumns = @JoinColumn(name = "film_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categories;
 
     // GETTERS E SETTERS
     public Integer getId() {

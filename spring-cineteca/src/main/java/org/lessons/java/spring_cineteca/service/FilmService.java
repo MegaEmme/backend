@@ -23,6 +23,7 @@ public class FilmService {
         return filmRepository.findByTitleContaining(title);
     }
 
+    // Recupera per ID
     public Film getById(Integer id) {
         return filmRepository.findById(id).get();
     }

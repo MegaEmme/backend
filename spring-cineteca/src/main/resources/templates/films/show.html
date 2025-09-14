@@ -24,7 +24,8 @@
                 <h6 class="fw-bold">Trama:</h6>
                 <span th:text="*{plot}"></span>
                 </p>
-                <div class="text-center mt-4">
+                <div class="d-flex justify-content-between mt-4">
+                    <a th:href="@{/films/edit/{id}(id = *{id})}" class="btn btn-outline-light rounded-pill">Modifica</a>
                     <a th:href="@{/films}" class="btn btn-outline-light rounded-pill">Torna alla lista</a>
                 </div>
             </div>

@@ -22,6 +22,9 @@ public class Film {
     @NotBlank(message = "Title must be not null, empty, or blank")
     private String title;
 
+    @NotBlank(message = "Image URL must be not null, nor empty or blank")
+    private String imageUrl;
+
     @Lob
     private String plot;
 
@@ -49,6 +52,14 @@ public class Film {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getPlot() {

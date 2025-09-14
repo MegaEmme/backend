@@ -24,12 +24,12 @@
                             Films
                         </a>
                     </li>
-                    <!-- <li sec:authorize="hasAuthority('ADMIN')" class="nav-item"
-                        th:classappend="${current == 'ingredients'} ? 'active'">
-                        <a class="nav-link" th:href="@{/ingredients}">
+                    <!-- sec:authorize="hasAuthority('ADMIN')"  -->
+                    <li class="nav-item" th:classappend="${current == 'categories'} ? 'active'">
+                        <a class="nav-link" th:href="@{/categories}">
                             Categorie
                         </a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
             <!-- <div class="user-info">

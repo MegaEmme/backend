@@ -8,7 +8,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "films")
@@ -28,12 +28,11 @@ public class Film {
     @Lob
     private String plot;
 
-    @NotBlank(message = "Year must be not null, empty, or blank")
+    @NotNull(message = "Year must be not null")
     @Min(value = 1895, message = "There are no movies ever made before the year 1895")
-    @PastOrPresent(message = "Year cannot be set in the future")
     private Integer year;
 
-    @NotBlank(message = "Duration must be not null, empty, or blank")
+    @NotNull(message = "Duration must be not null")
     @Min(value = 0, message = "Duration cannot be negative")
     private Integer duration;
 

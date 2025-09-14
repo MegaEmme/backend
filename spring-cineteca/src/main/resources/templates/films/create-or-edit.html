@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{fragments/resources :: headTags}"></div>
+</head>
+
+<body>
+    <nav th:replace="~{fragments/navbar :: navbar('Nuovo Film')}"></nav>
+
+    <main class="container">
+        <div class="col-12">
+            <th:block>
+                <h1 th:if="${edit}" class="py-4 mb-2 text-center">Modifica film:
+                    <span class="fw-bold">"[[${film.title}]]"</span>
+                </h1>
+                <h1 th:unless="${edit}" class="py-4 mb-2 text-center">Creazione nuovo film:
+                </h1>
+
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <hr />
+                        <form id="film-form" th:action="${edit} ? @{/films/edit/{id}(id=${film.id})} : @{/films/create}"
+                            th:object="${film}" method="post">
+                            <!-- TITOLO -->
+                            <div class="mb-3">
+                                <label class="form-label" for="name">Titolo:</label>
+                                <input class="form-control" type="text" id="title" th:field="*{title}"
+                                    th:errorClass="is-invalid" placeholder="La dolce vita...">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}">
+                                    <ul>
+                                        <li th:each="error : ${#fields.errors('title')}" th:text="${error}" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- IMMAGINE -->
+                            <div class="mb-3">
+                                <label class="form-label" for="imageUrl">Immagine:</label>
+                                <input class="form-control" type="url" id="imageUrl" th:field="*{imageUrl}"
+                                    th:errorClass="is-invalid">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('imageUrl')}">
+                                    <ul>
+                                        <li th:each="error : ${#fields.errors('imageUrl')}" th:text="${error}" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- TRAMA -->
+                            <div class="mb-3">
+                                <label class="form-label" for="plot">Trama:</label>
+                                <textarea class="form-control" type="text" id="plot" th:field="*{plot}"
+                                    th:errorClass="is-invalid" />
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('plot')}">
+                                    <ul>
+                                        <li th:each="error : ${#fields.errors('plot')}" th:text="${error}" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- ANNO -->
+                            <div class="mb-3">
+                                <label class="form-label" for="year">Anno di uscita:</label>
+                                <input class="form-control" type="number" id="year" th:field="*{year}"
+                                    th:errorClass="is-invalid">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('year')}">
+                                    <ul>
+                                        <li th:each="error : ${#fields.errors('year')}" th:text="${error}" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- DURATA -->
+                            <div class="mb-3">
+                                <label class="form-label" for="duration">Durata:</label>
+                                <input class="form-control" type="number" id="duration" th:field="*{duration}"
+                                    th:errorClass="is-invalid">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('duration')}">
+                                    <ul>
+                                        <li th:each="error : ${#fields.errors('duration')}" th:text="${error}" />
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- BOTTONI CREAZIONE E RESET -->
+                            <div class="mb-3 d-flex justify-content-between">
+                                <input type="submit" class="btn btn-primary" value="Salva">
+                                <input type="reset" class="btn btn-warning" value="Resettare campi">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </th:block>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/resources :: scripts}"></div>
+</body>
+
+</html>

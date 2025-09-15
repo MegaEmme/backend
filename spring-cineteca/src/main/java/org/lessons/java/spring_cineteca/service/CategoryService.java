@@ -5,6 +5,7 @@ import java.util.List;
 import org.lessons.java.spring_cineteca.model.Category;
 import org.lessons.java.spring_cineteca.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +17,11 @@ public class CategoryService {
     // Lista categorie
     public List<Category> findAll() {
         return categoryRepository.findAll();
+    }
+
+    // lista categorie ordinate per nome
+    public List<Category> findAllSortedByName() {
+        return categoryRepository.findAll(Sort.by("name"));
     }
 
     // Recupera per ID

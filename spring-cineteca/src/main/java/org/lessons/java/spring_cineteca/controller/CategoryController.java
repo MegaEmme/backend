@@ -1,9 +1,13 @@
 package org.lessons.java.spring_cineteca.controller;
 
+import java.util.List;
+
 import org.lessons.java.spring_cineteca.model.Category;
 import org.lessons.java.spring_cineteca.model.Film;
 import org.lessons.java.spring_cineteca.service.CategoryService;
+import org.lessons.java.spring_cineteca.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,10 +26,14 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private FilmService filmService;
+
     // INDEX
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("categories", categoryService.findAll());
+    public String index(Authentication authentication, Model model) {
+        model.addAttribute("categories", categoryService.findAllSortedByName());
+        model.addAttribute("username", authentication.getName());
         return "categories/index";
     }
 
@@ -33,7 +41,9 @@ public class CategoryController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
         Category category = categoryService.getById(id);
+        List<Film> orderedFilms = filmService.findByCategoriesOrderByTitle(category);
         model.addAttribute("category", category);
+        model.addAttribute("films", orderedFilms);
         return "categories/show";
     }
 

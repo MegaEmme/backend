@@ -3,9 +3,11 @@ package org.lessons.java.spring_cineteca.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.lessons.java.spring_cineteca.model.Category;
 import org.lessons.java.spring_cineteca.model.Film;
 import org.lessons.java.spring_cineteca.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +24,16 @@ public class FilmService {
     // Filtro ricerca per nome
     public List<Film> findByTitle(String title) {
         return filmRepository.findByTitleContaining(title);
+    }
+
+    // lista film ordinati per nome
+    public List<Film> findAllSortedByTitle() {
+        return filmRepository.findAll(Sort.by("title"));
+    }
+
+    // Lista film legati a categorie per nome
+    public List<Film> findByCategoriesOrderByTitle(Category category) {
+        return filmRepository.findByCategoriesOrderByTitle(category, Sort.by("title"));
     }
 
     // Recupera per ID

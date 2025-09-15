@@ -48,7 +48,7 @@ public class FilmController {
     // INDEX
     @GetMapping
     public String index(Authentication authentication, Model model) {
-        List<Film> films = filmService.findAll();
+        List<Film> films = filmService.findAllSortedByTitle();
         model.addAttribute("films", films);
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("username", authentication.getName());
@@ -67,14 +67,14 @@ public class FilmController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("film", new Film());
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAllSortedByName());
         return "films/create-or-edit";
     }
 
     @PostMapping("/create")
     public String store(@Valid @ModelAttribute("film") Film formFilm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("categories", categoryService.findAll());
+            model.addAttribute("categories", categoryService.findAllSortedByName());
             return "films/create-or-edit";
         }
         filmService.create(formFilm);
@@ -85,7 +85,7 @@ public class FilmController {
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
         model.addAttribute("film", filmService.getById(id));
-        model.addAttribute("categories", categoryService.findAll());
+        model.addAttribute("categories", categoryService.findAllSortedByName());
         model.addAttribute("edit", true);
         return "films/create-or-edit";
     }
@@ -93,7 +93,7 @@ public class FilmController {
     @PostMapping("/edit/{id}")
     public String update(@Valid @ModelAttribute("film") Film formFilm, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("categories", categoryService.findAll());
+            model.addAttribute("categories", categoryService.findAllSortedByName());
             return "films/create-or-edit";
         }
         filmService.update(formFilm);

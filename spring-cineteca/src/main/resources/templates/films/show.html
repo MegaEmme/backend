@@ -10,43 +10,51 @@
     <nav th:replace="~{fragments/navbar :: navbar('Dettaglio film')}"></nav>
     <div class="filler"></div>
     <main class="container p-4" th:object="${film}">
-        <div class="card detail-card rounded-4 bg-dark text-light shadow-lg" th:object="${film}">
-            <div class="card-header card-header-custom rounded-top-4">
-                <h1 class="card-title text-center fw-bold mb-0 text-dark" th:text="*{title}" />
-            </div>
-            <img th:src="*{imageUrl}" class="card-img-top img-fluid p-3" th:alt="*{title}">
-            <div class="card-body p-5">
-                <div class="d-flex justify-content-between text-light mb-4">
-                    <th:block th:if="${film.categories.size() > 0}">
-                        <div class="d-flex flex-wrap gap-1 mb-3">
-                            <span>Genere:</span>
+        <div class="card detail-card rounded-4 bg-dark text-light shadow-lg">
+            <div class="d-flex align-items-stretch">
+                <div class="p-3 d-flex align-items-center justify-content-center">
+                    <img th:src="*{imageUrl}" class="rounded-4 img-fluid" th:alt="*{title}">
+                </div>
+                <div class="card-body p-5">
+                    <div class="card-header card-header-custom mb-3">
+                        <h1 class="card-title text-center fw-bold mb-0 text-dark" th:text="*{title}" />
+                    </div>
+                    <th:block th:if="*{categories.size() > 0}">
+                        <div class="mb-3">
+                            <h6 class="fw-bold d-inline-block me-2">Genere:</h6>
                             <span th:each="category, iterStart : *{categories}">
-                                [[${category.name}]]<th:block th:unless="${iterStart.last}"> / </th:block>
+                                <a class="text-decoration-none text-light"
+                                    th:href="@{/categories/{id}(id=${category.id})}">[[${category.name}]]</a>
+                                <th:block th:unless="${iterStart.last}"> / </th:block>
                             </span>
                         </div>
                     </th:block>
-                    <th:block th:unless="${film.getCategories().size() > 0}">
-                        <p class="mb-3 alert alert-info">Questa film non ha categorie...</p>
+                    <th:block th:unless="*{categories.size() > 0}">
+                        <p class="mb-3 alert alert-info">Questo film non ha categorie...</p>
                     </th:block>
-                    <h6 class="card-subtitle fw-bold">Durata: [[*{duration}]] min</h6>
-                    <h6 class="card-subtitle">Anno: [[*{year}]]</h6>
-                </div>
-                <hr />
-                <p class="card-text">
-                <h6 class="fw-bold">Trama:</h6>
-                <span th:text="*{plot}"></span>
-                </p>
-                <div class="d-flex justify-content-between mt-4">
-                    <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/films/edit/{id}(id = *{id})}"
-                        class="btn btn-outline-light rounded-pill">Modifica</a>
-                    <form sec:authorize="hasAuthority('ADMIN')" class="d-inline-block"
-                        th:action="@{/films/delete/{id}(id=${film.id})}" method="post"
-                        th:onsubmit="return confirm('Eliminazione film: Sei sicuro di voler eliminare ' + [[${film.title}]] + '?')">
-                        <button type="submit" class="btn btn-outline-danger rounded-pill">
-                            Elimina
-                        </button>
-                    </form>
-                    <a th:href="@{/films}" class="btn btn-outline-primary rounded-pill">Torna alla lista</a>
+
+                    <div class="d-flex justify-content-between text-light mb-4">
+                        <h6 class="card-subtitle fw-bold">Durata: [[*{duration}]] min</h6>
+                        <h6 class="card-subtitle fw-bold">Anno: [[*{year}]]</h6>
+                    </div>
+
+                    <hr />
+
+                    <h6 class="fw-bold">Trama:</h6>
+                    <p class="card-text mb-4" th:text="*{plot}"></p>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/films/edit/{id}(id = *{id})}"
+                            class="btn btn-outline-light rounded-pill">Modifica</a>
+                        <form sec:authorize="hasAuthority('ADMIN')" class="d-inline-block"
+                            th:action="@{/films/delete/{id}(id=${film.id})}" method="post"
+                            th:onsubmit="return confirm('Eliminazione film: Sei sicuro di voler eliminare ' + [[${film.title}]] + '?')">
+                            <button type="submit" class="btn btn-outline-danger rounded-pill">
+                                Elimina
+                            </button>
+                        </form>
+                        <a th:href="@{/films}" class="btn btn-outline-primary rounded-pill">Torna alla lista</a>
+                    </div>
                 </div>
             </div>
         </div>

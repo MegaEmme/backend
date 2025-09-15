@@ -22,16 +22,16 @@
                     </p>
                 </th:block>
                 <hr />
-                <div class="mb-3" th:if="*{films.size() > 0}">
-                    <h6 class="mt-3">Film collegati ([[*{films.size()}]]):</h6>
+                <div class="mb-3" th:if="${films.size() > 0}">
+                    <h6 class="mt-3">Film collegati ([[${films.size()}]]):</h6>
                     <ul class="list-unstyled">
-                        <li th:each="film : *{films}">
+                        <li th:each="film : ${films}">
                             <a class="filmLink" th:href="@{/films/{id}(id=${film.id})}">[[${film.title}]]</a>
                         </li>
                     </ul>
                     <hr />
                 </div>
-                <div th:unless="*{films.size() > 0}">
+                <div th:unless="${films.size() > 0}">
                     <h6 class="mt-3">Nessun film collegato...</h6>
                     <hr />
                 </div>

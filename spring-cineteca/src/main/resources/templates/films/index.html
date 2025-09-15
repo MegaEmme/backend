@@ -12,17 +12,7 @@
     <main class="container p-4">
         <h1 class="text-center fw-bold mb-4">Lista Film</h1>
         <hr />
-        <!-- FILTRO RICERCA  -->
-        <!-- <div class="d-flex justify-content-around mb-4 align-items-center">
-            <form id="film-form" method="get" th:action="@{/films}" th:object="${film}"
-                class="d-flex justify-content-center align-items-center">
-                <h2 class="me-3 text-nowrap">Ricerca film: </h2>
-                <label for="search-term"></label>
-                <input type="text" id="search-term" name="searchTerm" class="me-3 rounded">
-                <button type="submit" class="btn btn-outline-dark rounded-pill btn-sm me-2">Cerca</button>
-            </form>
-        </div> -->
-        <div sec:authorize="hasAuthority('ADMIN')" class=" d-flex justify-content-center mb-4">
+        <div sec:authorize="hasAuthority('ADMIN')" class=" d-flex justify-content-between mb-4">
             <a th:href="@{/films/create}" class="btn btn-outline-dark btn-custom rounded-pill">Crea Film</a>
             <h3 th:text="'Ciao ' + ${username}" />
         </div>
@@ -33,7 +23,9 @@
                         <h3 class="card-title text-center fw-bold mb-0 text-dark text-truncate movie-title">[[*{title}]]
                         </h3>
                     </div>
-                    <img th:src="*{imageUrl}" class="card-img-top img-fluid p-3" th:alt="*{title}">
+                    <div class="p-3 d-flex align-items-center justify-content-center">
+                        <img th:src="*{imageUrl}" class="rounded-4 img-fluid img-custom" th:alt="*{title}">
+                    </div>
                     <div class="card-body card-body-custom">
                         <th:block th:if="${film.categories.size() > 0}">
                             <div class="d-flex flex-wrap gap-1 mb-3">

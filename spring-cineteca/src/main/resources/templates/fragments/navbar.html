@@ -31,10 +31,13 @@
                     </li>
                 </ul>
             </div>
-            <div class="user-info">
-                User: <span sec:authentication="name" class="fw-bold me-2"></span>
-                Role: <span sec:authentication="principal.authorities" class="fw-bold me-2"></span>
-                <a class="btn btn-sm btn-outline-primary" href="/logout">Sign out</a>
+            <div class="user-info d-flex align-items-center log-out rounded p-3">
+                <div class="d-flex flex-column me-3">
+                    <h5>User: <span sec:authentication="name" class="fw-bold"></span></h5>
+                    <h5>Role: <span sec:authentication="principal.authorities[0].authority" class="fw-bold"></span>
+                    </h5>
+                </div>
+                <a class="btn btn-sm btn-outline-dark" href="/logout">Sign out</a>
             </div>
         </div>
     </nav>

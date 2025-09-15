@@ -12,9 +12,10 @@
     <main class="container p-4">
         <h1 class="text-center fw-bold mb-4">Lista Generi</h1>
         <hr />
-        <div class="d-flex justify-content-center mb-4">
+        <div sec:authorize="hasAuthority('ADMIN')" class="d-flex justify-content-between mb-4">
             <a th:href="@{/categories/create}" class="btn btn-outline-dark btn-custom rounded-pill mb-4">Crea
                 Genere</a>
+            <h3 th:text="'Ciao ' + ${username}" />
         </div>
         <div class="row g-4">
             <div th:each="category : ${categories}" th:object="${category}" class="col-12 col-sm-6 col-md-4 col-lg-4">

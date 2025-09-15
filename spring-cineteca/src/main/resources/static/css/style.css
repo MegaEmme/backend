@@ -37,6 +37,11 @@ body {
     transform: translateY(-5px);
 }
 
+.img-custom {
+    height: 20rem;
+    object-fit: contain;
+}
+
 .card-body-custom {
     display: flex;
     flex-direction: column;
@@ -48,6 +53,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .btn-custom {
@@ -88,4 +94,10 @@ body {
 /* CATEGORIES */
 .filmLink {
     color: inherit;
+}
+
+/* LOGOUT BOX */
+.log-out {
+    border: 1px solid black;
+
 }

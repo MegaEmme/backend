@@ -37,7 +37,7 @@
                     <h6>Role: <span sec:authentication="principal.authorities[0].authority" class="fw-bold"></span>
                     </h6>
                 </div>
-                <a class="btn btn-sm btn-outline-dark" href="/logout">Sign out</a>
+                <a class="btn btn-sm btn-outline-dark" th:href="@{/logout}">Sign out</a>
             </div>
             <div sec.authorize="isAnonymous()" class="user-info d-flex align-items-center rounded p-2">
                 <a th:href="@{/login}" class="btn btn-sm btn-outline-dark">Accedi</a>

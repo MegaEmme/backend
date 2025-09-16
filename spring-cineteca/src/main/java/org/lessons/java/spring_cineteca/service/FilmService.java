@@ -31,6 +31,11 @@ public class FilmService {
         return filmRepository.findAll(Sort.by("title"));
     }
 
+    // Lista film ordinati per anno
+    public List<Film> findAllSortedByYear() {
+        return filmRepository.findAll(Sort.by("year"));
+    }
+
     // Lista film legati a categorie per nome
     public List<Film> findByCategoriesOrderByTitle(Category category) {
         return filmRepository.findByCategoriesOrderByTitle(category, Sort.by("title"));

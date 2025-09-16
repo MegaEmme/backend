@@ -19,7 +19,7 @@ public class SecurityConfiguration {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                 // Rotta base (localhos:8080)
-                .requestMatchers("/").hasAnyAuthority("USER", "ADMIN")
+                .requestMatchers("/").permitAll()
                 // I percorsi per creare e modificare i film e le categorie sono per soli
                 // ADMIN.
                 .requestMatchers("films/create", "films/edit/**").hasAuthority("ADMIN")

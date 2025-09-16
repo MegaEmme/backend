@@ -87,17 +87,10 @@ body {
     background-color: #f8f9fa;
     height: 60px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 /* CATEGORIES */
 .filmLink {
     color: inherit;
-}
-
-/* LOGOUT BOX */
-.log-out {
-    border: 1px solid black;
-
 }

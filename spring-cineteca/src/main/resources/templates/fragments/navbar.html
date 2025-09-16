@@ -31,13 +31,16 @@
                     </li>
                 </ul>
             </div>
-            <div class="user-info d-flex align-items-center log-out rounded p-3">
+            <div sec:authorize="isAuthenticated()" class="user-info d-flex align-items-center rounded p-2">
                 <div class="d-flex flex-column me-3">
-                    <h5>User: <span sec:authentication="name" class="fw-bold"></span></h5>
-                    <h5>Role: <span sec:authentication="principal.authorities[0].authority" class="fw-bold"></span>
-                    </h5>
+                    <h6>User: <span sec:authentication="name" class="fw-bold"></span></h6>
+                    <h6>Role: <span sec:authentication="principal.authorities[0].authority" class="fw-bold"></span>
+                    </h6>
                 </div>
                 <a class="btn btn-sm btn-outline-dark" href="/logout">Sign out</a>
+            </div>
+            <div sec.authorize="isAnonymous()" class="user-info d-flex align-items-center rounded p-2">
+                <a th:href="@{/login}" class="btn btn-sm btn-outline-dark">Accedi</a>
             </div>
         </div>
     </nav>

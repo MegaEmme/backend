@@ -16,7 +16,7 @@
                     <img th:src="*{imageUrl}" class="rounded-4 img-fluid" th:alt="*{title}">
                 </div>
                 <div class="card-body p-5">
-                    <div class="card-header card-header-custom mb-3">
+                    <div class="card-header card-header-custom card-header-show mb-3">
                         <h1 class="card-title text-center fw-bold mb-0 text-dark" th:text="*{title}" />
                     </div>
                     <th:block th:if="*{categories.size() > 0}">
@@ -42,7 +42,7 @@
 
                     <h6 class="fw-bold">Trama:</h6>
                     <p class="card-text mb-4" th:text="*{plot}"></p>
-
+                    <hr />
                     <div class="d-flex justify-content-between mt-4">
                         <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/films/edit/{id}(id = *{id})}"
                             class="btn btn-outline-light rounded-pill">Modifica</a>

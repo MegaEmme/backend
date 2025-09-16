@@ -10,17 +10,17 @@
     <nav th:replace="~{fragments/navbar :: navbar('Home')}"></nav>
     <div class="filler"></div>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Benvenuto nella Cineteca di Mike</h1>
+        <h1 class="text-center mb-4 fw-bold">Cineteca di Mike</h1>
         <hr />
         <div class="container">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium odit pariatur quisquam natus fuga
-                quasi,
-                repellendus nesciunt aliquam, explicabo minima, temporibus sapiente. Quibusdam, reiciendis veniam ullam
-                delectus nobis debitis aliquid. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                repudiandae
-                cum quaerat, amet, tempora sapiente delectus cumque consequuntur asperiores non, provident magnam autem
-                perferendis. Ipsa odio nisi aspernatur dolor sequi.</p>
-            <hr />
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-lg  btn-outline-dark me-4" th:href="@{/films}">
+                    Films
+                </a>
+                <a class="btn btn-lg btn-outline-dark" th:href="@{/categories}">
+                    Generi
+                </a>
+            </div>
             <p class="card-text mt-5">
                 Il mio obiettivo è che questa cineteca non sia solo un catalogo online, ma una dimostrazione pratica di
                 come

@@ -38,7 +38,7 @@ public class FilmRestController {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
             }
         } else {
-            films = filmService.findAll();
+            films = filmService.findAllSortedByTitle();
         }
         return films;
     }

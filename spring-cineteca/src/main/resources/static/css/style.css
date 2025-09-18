@@ -101,10 +101,6 @@ body {
     transition: transform 0.2s;
 }
 
-.detail-card:hover {
-    transform: translateY(-5px);
-}
-
 .card-header-custom {
     background-color: #f8f9fa;
     height: 60px;

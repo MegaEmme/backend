@@ -22,13 +22,26 @@ body {
 }
 
 /* HOME */
-.logo-home {
-    position: absolute;
-    right: 70%;
-    top: 13.5%;
-    height: 10vh;
-    width: 10vh;
-    opacity: .8;
+.home-body {
+    background-color: #210506;
+}
+
+.home {
+    background-image: url('images/mikes-movie-center.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+}
+
+.home-buttons {
+    position: relative;
+    top: 60vh;
+}
+
+.home-text {
+    position: relative;
+    top: 80vh;
 }
 
 .filler {

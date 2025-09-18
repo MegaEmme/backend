@@ -6,17 +6,11 @@
     <title>Home</title>
 </head>
 
-<body>
+<body class="home-body">
     <nav th:replace="~{fragments/navbar :: navbar('Home')}"></nav>
-    <div class="filler"></div>
     <div class="container mt-5">
-        <div>
-            <img class="logo-home" th:src="@{/css/images/logo_cineteca_2.svg}" alt="logo-home">
-        </div>
-        <h1 class="text-center mb-4 fw-bold">Cineteca di Mike</h1>
-        <hr />
-        <div class="container">
-            <div class="d-flex justify-content-center">
+        <div class="container home rounded">
+            <div class="d-flex justify-content-center home-buttons">
                 <a class="btn btn-lg  btn-outline-dark me-4" th:href="@{/films}">
                     Films
                 </a>
@@ -24,16 +18,11 @@
                     Generi
                 </a>
             </div>
-            <p class="card-text mt-5">
-                Il mio obiettivo è che questa cineteca non sia solo un catalogo online, ma una dimostrazione pratica di
-                come
-                il
-                codice possa dare vita a un'applicazione robusta ed efficiente.
-            </p>
-            <hr />
-            <p class="text-end fw-bold">
-                Buon Divertimento!<br>Michelangelo Musco
-            </p>
+            <div class="home-text">
+                <p class="text-end fw-bold text-light">
+                    Buon Divertimento!<br>Michelangelo Musco
+                </p>
+            </div>
         </div>
 
     </div>

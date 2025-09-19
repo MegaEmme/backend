@@ -103,9 +103,6 @@ body {
 
 .card-header-custom {
     background-color: #f8f9fa;
-    height: 60px;
-    display: flex;
-    justify-content: center;
 }
 
 /* CATEGORIES */

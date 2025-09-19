@@ -18,4 +18,4 @@ Esempi:
 Tutto il backoffice deve essere realizzato usando Thymeleaf, ma potete aiutarvi con JS per eventuali necessità di logiche frontend. Siete anche liberi di usare librerie JavaScript esterne se vi torna comodo. 
 
 ## Link al frontend:
-`https://github.com/MegaEmme/frontend`
+[Frontend Repository](https://github.com/MegaEmme/frontend)

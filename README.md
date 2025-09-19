@@ -16,3 +16,6 @@ Esempi:
 - Se avete scelto i film, potreste collegarli ai generi cinematografici (Azione, Commedia, Horror).
 - Potreste anche scegliere di avere 2 entità relazionate, ad esempio, nel caso di videogiochi, sia la console che il genere (Avventura, Picchiaduro, GDR)
 Tutto il backoffice deve essere realizzato usando Thymeleaf, ma potete aiutarvi con JS per eventuali necessità di logiche frontend. Siete anche liberi di usare librerie JavaScript esterne se vi torna comodo. 
+
+## Link al frontend:
+`https://github.com/MegaEmme/frontend`

@@ -20,7 +20,7 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                // Rotta base (localhos:8080)
+                // Rotta base (localhost:8080)
                 .requestMatchers("/").permitAll()
                 // I percorsi per creare e modificare i film e le categorie sono per soli
                 // ADMIN.
@@ -58,6 +58,10 @@ public class SecurityConfiguration {
 
     @Bean
     @SuppressWarnings("deprecation")
+    // il DAOAuthenticationProvider è un intermediario che orchestra il processo di
+    // autenticazione,
+    // separando la logica del recupero dati (UserDetailService) da quella di
+    // confronto delle password (PasswordEncoder)
     DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailService());

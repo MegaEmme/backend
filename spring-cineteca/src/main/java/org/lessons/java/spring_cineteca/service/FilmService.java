@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
+// service è una classe che incapsula la logica di business - serve a separare i
+// compiti
 public class FilmService {
 
     @Autowired

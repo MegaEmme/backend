@@ -10,9 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -21,16 +18,11 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                // Rotta base (localhost:8080)
                 .requestMatchers("/").permitAll()
-                // I percorsi per creare e modificare i film e le categorie sono per soli
-                // ADMIN.
                 .requestMatchers("films/create", "films/edit/**").hasAuthority("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/films/**").hasAuthority("ADMIN")
                 .requestMatchers("/categories", "/categories/**").hasAnyAuthority("USER", "ADMIN")
-                // I percorsi per i film sono accessibili sia da USER che da ADMIN.
                 .requestMatchers("/films", "/films/**").hasAnyAuthority("USER", "ADMIN")
-                // Tutti gli altri percorsi sono accessibili a chiunque.
                 .requestMatchers("/**").permitAll());
 
         http.formLogin(Customizer.withDefaults());

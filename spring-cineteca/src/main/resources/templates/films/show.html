@@ -25,7 +25,7 @@
                         <div class="mb-3">
                             <h6 class="fw-bold d-inline-block me-2">Genere:</h6>
                             <span th:each="category, iterStart : *{categories}">
-                                <a class="text-decoration-none text-light"
+                                <a class="text-light"
                                     th:href="@{/categories/{id}(id=${category.id})}">[[${category.name}]]</a>
                                 <th:block th:unless="${iterStart.last}"> / </th:block>
                             </span>

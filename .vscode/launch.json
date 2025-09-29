@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringCinetecaApplication<spring-cineteca>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "org.lessons.java.spring_cineteca.SpringCinetecaApplication",
+            "projectName": "spring-cineteca",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

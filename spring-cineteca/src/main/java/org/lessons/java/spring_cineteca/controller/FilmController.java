@@ -23,13 +23,6 @@ import jakarta.validation.Valid;
 public class FilmController {
 
     @Autowired
-    // con @Autowired sto chiedendo a Spring di fornirmi un'istanza concreta del
-    // filmService. In sostanza Spring, all'avvio dell'applicazione, scansiona il
-    // progetto e identifica tutte le interfacce che estendono JpaRepository. Per
-    // ognuna di esse Spring crea (dinamicamente, al volo) una classe di
-    // implementazione concreta (proxy) con la logica di tutti i metodi definiti
-    // (ereditati da JpaRepository, customizzati tramite query derivate dal nome del
-    // metodo e customizzati tramite query esplicite) e la "inietta" nel componente.
     private FilmService filmService;
     @Autowired
     private CategoryService categoryService;

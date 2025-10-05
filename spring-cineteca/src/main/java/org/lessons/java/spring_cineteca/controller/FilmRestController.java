@@ -23,12 +23,6 @@ import org.springframework.web.server.ResponseStatusException;
 import jakarta.validation.Valid;
 
 @RestController
-// RestController restituisce dati in formato Json anziche una view html, è
-// l'equivalente del controller più l'aggiunta automatica del responseBody a
-// tutti i suoi metodi.
-// ResponseBody indica che il valore di ritorno di un metodo di un controller
-// deve essere legato direttamente al corpo (body) della risposta HTTP e non
-// interpretato come il nome di una view.
 @RequestMapping("/api/films")
 @CrossOrigin(origins = "http://localhost:5173")
 public class FilmRestController {

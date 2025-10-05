@@ -35,10 +35,6 @@
                         <th:block th:unless="${film.getCategories().size() > 0}">
                             <p class="mb-3 alert alert-info">Questa film non ha categorie...</p>
                         </th:block>
-                        <!-- <div class="d-flex justify-content-between text-light mb-2">
-                            <h6 class="card-subtitle fw-bold">Durata: [[*{duration}]] min</h6>
-                            <h6 class="card-subtitle">Anno: [[*{year}]]</h6>
-                        </div> -->
                         <hr />
                         <div class="d-flex justify-content-around mb-4">
                             <a th:href="@{/films/{id}(id=*{id})}"

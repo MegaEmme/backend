@@ -10,16 +10,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class DatabaseUserDetails implements UserDetails {
-    // Questo è l'oggetto che modella i dati dell'utente in formato comprensibile da
-    // Spring Security
     private final Integer id;
     private final String username;
     private final String password;
     private final Set<GrantedAuthority> authorities;
 
-    // interfaccia che ha come solo metodo getAuthoriry() che ritorna una stringa
-    // incapsula la nostra entità "user" e mappa i roles in oggetti
-    // SimpleGrantedAuthority(getAuthorities())
     public DatabaseUserDetails(User user) {
         this.id = user.getId();
         this.username = user.getUsername();

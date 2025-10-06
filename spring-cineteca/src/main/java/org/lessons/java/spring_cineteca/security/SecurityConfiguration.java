@@ -12,15 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-// Spring Security framework gestisce i due principi base, autenticazione e
-// autorizzazione
-// Configurazione principale definisce i tre bean essenziali:
 @EnableWebSecurity
 public class SecurityConfiguration {
-    // A:
-    // 1) catena dei filtri(security filter chain)
-    // 2) form di login/logout
-    // 3) disabilitazione cors/csfr
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
@@ -35,7 +28,6 @@ public class SecurityConfiguration {
         http.logout(Customizer.withDefaults());
         http.exceptionHandling(Customizer.withDefaults());
 
-        // Disabilito CORS e CSRF, che non si trovano nel blocco authorizeHttpRequests
         http.cors(cors -> cors.disable());
         http.csrf(csrf -> csrf.disable());
 
@@ -44,10 +36,6 @@ public class SecurityConfiguration {
 
     @Bean
     @SuppressWarnings("deprecation")
-    // il DAOAuthenticationProvider è un intermediario che orchestra il processo di
-    // autenticazione,
-    // separando la logica del recupero dati (UserDetailService) da quella di
-    // confronto delle password (PasswordEncoder)
     DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailService());
@@ -56,14 +44,11 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    // implementazione di userDetailsService fa da ponte tra Spring Security e il
-    // database, è la logica di recupero dati
     DatabaseUserDetailService userDetailService() {
         return new DatabaseUserDetailService();
     }
 
     @Bean
-    // responsabile di criptare e everificare la password
     PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }

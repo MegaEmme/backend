@@ -3,6 +3,8 @@ package org.lessons.java.spring_cineteca.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.Spring;
+
 import org.lessons.java.spring_cineteca.model.Film;
 import org.lessons.java.spring_cineteca.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,6 +46,21 @@ public class FilmRestController {
             films = filmService.findAllSortedByTitle();
         }
         return films;
+        // Quando si ritorna direttamente un oggetto (come List<Film>) da una classe
+        // annotata con @RestController,
+        // Spring esegue automaticamente due azioni fondamentali:
+
+        // Status Code: Imposta lo status HTTP della risposta su 200 OK (il codice di
+        // successo standard) per impostazione predefinita.
+
+        // Serializzazione: Utilizza un Message Converter (solitamente Jackson per il
+        // JSON) per convertire l'oggetto List<Film> in un payload JSON (o XML, a
+        // seconda della configurazione e degli header della richiesta) da inviare al
+        // client.
+
+        // In breve: per il caso di successo, ritornare l'oggetto è una sintassi più
+        // concisa e pulita rispetto a return new ResponseEntity<>(films,
+        // HttpStatus.OK);.
     }
 
     // SHOW

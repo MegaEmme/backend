@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoryService {
     @Autowired
+    /// classe proxy --> categoryRepository è interfaccia
     private CategoryRepository categoryRepository;
 
     // Lista categorie
